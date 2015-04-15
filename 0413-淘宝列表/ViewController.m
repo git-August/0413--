@@ -13,7 +13,6 @@
     NSMutableArray * _goodsarr;
     NSMutableArray * _deletecellarr;
 }
-
 @end
 
 @implementation ViewController
@@ -32,15 +31,24 @@
         goodCell * goodcell = [goodCell cellWithdict:good];
         [_goodsarr addObject:goodcell];
     }
-    
-    
     _deletecellarr = [NSMutableArray array];
 }
 //初始化和刷新视图进入此方法,显示n行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+//    NSLog(@"%ld=======_deletecellarr",_deletecellarr.count);
+    
+    if (_deletecellarr.count == 0) {
+        _taobaoNum.text = @"淘宝";
+        _TrashBtn.enabled = NO;
+    }
+    else {
+        _taobaoNum.text = [NSString stringWithFormat:@"淘宝(%ld)",_deletecellarr.count];
+        _TrashBtn.enabled = YES;
+    }
+
     return _goodsarr.count;
 }
-//初始化时和新视图进入视野时进入此方法,显示n行的cell
+//初始化时和新视图进入视野时进入此方法,显示n行的cell,调用局部刷新不进入此方法
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * identifier = @"hehe";
     UITableViewCell * cell = [_tableview dequeueReusableCellWithIdentifier:identifier];
@@ -59,24 +67,12 @@
     cell.imageView.image = [UIImage imageNamed:picname];
     cell.textLabel.text = good.goodname;
     cell.detailTextLabel.text = good.descname;
-    
-
-    
     if ([_deletecellarr containsObject:good]) {
-
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     else {
-        cell.AccessoryType = UITableViewCellAccessoryNone;
+        cell.accessoryType = UITableViewCellAccessoryNone;
 
-    }
-    if (_deletecellarr.count == 0) {
-        _taobaoNum.text = @"淘宝";
-        _TrashBtn.enabled = NO;
-    }
-    else {
-        _taobaoNum.text = [NSString stringWithFormat:@"淘宝(%ld)",_deletecellarr.count];
-        _TrashBtn.enabled = YES;
     }
 
         return cell;
@@ -87,7 +83,6 @@
     //tableview可以得到任一行的cell，tableview和cell各自独立,不应过多耦合，万一cell拿到其他地方用呢？
 //    UITableViewCell * cell = [_tableview cellForRowAtIndexPath:indexPath];
 //    cell.AccessoryType = UITableViewCellAccessoryCheckmark;
-
     [_tableview deselectRowAtIndexPath:indexPath animated:YES];
 #pragma mark tableview通过行索引对象得到一个cell,思考一下为什么？cell不是tableview的属性又不是子类，产生关系的途径有且只有方法。
 //     UITableViewCell * cell = [_tableview cellForRowAtIndexPath:indexPath];
@@ -102,7 +97,6 @@
         [_deletecellarr addObject:good];
         
     }
-    
     //    [_tableview reloadData];//没有动画效果
     //这里取出nsarray * 的indexpath比较怪异,直接把indexpath放入@[]数组中了。
     [_tableview reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
@@ -112,35 +106,31 @@
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    UITableViewCell * cell = [_tableview cellForRowAtIndexPath:indexPath];
 //    cell.AccessoryType = UITableViewCellAccessoryNone;
-    
 }
-
 //调整一下tableview的高度，重新进入视野调用/初始化
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-
     return 60;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 - (IBAction)Trash:(UIBarButtonItem *)sender {
-    
+    NSMutableArray * patharr = [NSMutableArray array];
+    for (goodCell * good in _deletecellarr) {
+//        NSLog(@"_deletecellarr.count----%ld",_deletecellarr.count);
+        NSInteger index = [_goodsarr indexOfObject:good];
+//        NSLog(@"%ld----",index);
+        NSIndexPath * path = [NSIndexPath indexPathForRow:index inSection:0];
+#pragma mark error:先删模型，再删cell;调用deleterows方法相当于局部刷新，需要重载数据源，此时发现数据源数目和cell数目不一致导致崩溃。
+//        [_goodsarr removeObject:good];
+        [patharr addObject:path];
+    }
+    [_goodsarr removeObjectsInArray:_deletecellarr];
+    [_deletecellarr removeAllObjects];
+//    NSLog(@"patharr-----%@",patharr);
+#pragma mark 当心：调用下面这个方法，只有在有新的cell进入视野才会进入cellforrows这个方法，所以当当前cell都在视野内时,不刷新淘宝个数/不禁止删除按钮
+    [_tableview deleteRowsAtIndexPaths:patharr withRowAnimation:UITableViewRowAnimationMiddle];
+//    [_tableview reloadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 @end
