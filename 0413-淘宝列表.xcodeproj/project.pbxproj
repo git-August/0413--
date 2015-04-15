@@ -30,6 +30,7 @@
 		0F5BC3341ADB4AAF006B771E /* phone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0F5BC3241ADB4AAF006B771E /* phone.jpg */; };
 		0F5BC3361ADB4AAF006B771E /* toy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0F5BC3261ADB4AAF006B771E /* toy.jpg */; };
 		0F5BC3381ADB4B31006B771E /* goods.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F5BC3371ADB4B31006B771E /* goods.plist */; };
+		0FDE5EAD1ADE5245009F854E /* goodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE5EAC1ADE5245009F854E /* goodCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		0F5BC3241ADB4AAF006B771E /* phone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = phone.jpg; sourceTree = "<group>"; };
 		0F5BC3261ADB4AAF006B771E /* toy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = toy.jpg; sourceTree = "<group>"; };
 		0F5BC3371ADB4B31006B771E /* goods.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = goods.plist; sourceTree = "<group>"; };
+		0FDE5EAB1ADE5245009F854E /* goodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goodCell.h; sourceTree = "<group>"; };
+		0FDE5EAC1ADE5245009F854E /* goodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goodCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				0F5BC2FD1ADB4563006B771E /* Images.xcassets */,
 				0F5BC2FF1ADB4563006B771E /* LaunchScreen.xib */,
 				0F5BC2F01ADB4563006B771E /* Supporting Files */,
+				0FDE5EAB1ADE5245009F854E /* goodCell.h */,
+				0FDE5EAC1ADE5245009F854E /* goodCell.m */,
 			);
 			path = "0413-淘宝列表";
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 			files = (
 				0F5BC2F91ADB4563006B771E /* ViewController.m in Sources */,
 				0F5BC2F61ADB4563006B771E /* AppDelegate.m in Sources */,
+				0FDE5EAD1ADE5245009F854E /* goodCell.m in Sources */,
 				0F5BC2F31ADB4563006B771E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +490,7 @@
 				0F5BC3121ADB4563006B771E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0F5BC3131ADB4563006B771E /* Build configuration list for PBXNativeTarget "0413-淘宝列表Tests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +499,7 @@
 				0F5BC3151ADB4563006B771E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

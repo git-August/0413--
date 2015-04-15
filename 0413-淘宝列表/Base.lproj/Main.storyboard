@@ -46,6 +46,7 @@
                     <connections>
                         <outlet property="TrashBtn" destination="GPR-gD-Sfe" id="MOP-tK-UqU"/>
                         <outlet property="tableview" destination="7Ao-9S-Vxn" id="p6u-IF-At0"/>
+                        <outlet property="taobaoNum" destination="L0X-wG-wgO" id="M1X-PA-mxO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

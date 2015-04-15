@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 - (IBAction)Trash:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UILabel *taobaoNum;
 
 @end
 
