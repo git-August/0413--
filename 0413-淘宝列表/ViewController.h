@@ -15,5 +15,7 @@
 - (IBAction)Trash:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UILabel *taobaoNum;
 
+- (IBAction)selectall:(UIBarButtonItem *)sender;
+
 @end
 

@@ -21,6 +21,12 @@
                                             <action selector="Trash:" destination="vXZ-lx-hvc" id="1FG-Kg-SKm"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="zgP-zM-Rnw"/>
+                                    <barButtonItem title="全选" width="30" id="LQu-9f-VnD">
+                                        <connections>
+                                            <action selector="selectall:" destination="vXZ-lx-hvc" id="twC-4a-Il7"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="淘宝" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L0X-wG-wgO">
@@ -51,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="301.33333333333331" y="408.01333333333332"/>
+            <point key="canvasLocation" x="333" y="321"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

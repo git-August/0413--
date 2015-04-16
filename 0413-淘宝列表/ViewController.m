@@ -48,7 +48,7 @@
 
     return _goodsarr.count;
 }
-//初始化时和新视图进入视野时进入此方法,显示n行的cell,调用局部刷新不进入此方法
+//初始化时和新视图/全部刷新进入视野时进入此方法,显示n行的cell,调用局部刷新不进入此方法
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * identifier = @"hehe";
     UITableViewCell * cell = [_tableview dequeueReusableCellWithIdentifier:identifier];
@@ -75,6 +75,7 @@
 
     }
 
+    else {
         return cell;
 }
 #pragma mark 上边打了对勾下边也有,error,使用数组记录。
@@ -100,6 +101,7 @@
     //    [_tableview reloadData];//没有动画效果
     //这里取出nsarray * 的indexpath比较怪异,直接把indexpath放入@[]数组中了。
     [_tableview reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+
 }
 
 //未选中一行就进入此方法
@@ -127,10 +129,22 @@
 //    NSLog(@"patharr-----%@",patharr);
 #pragma mark 当心：调用下面这个方法，只有在有新的cell进入视野才会进入cellforrows这个方法，所以当当前cell都在视野内时,不刷新淘宝个数/不禁止删除按钮
     [_tableview deleteRowsAtIndexPaths:patharr withRowAnimation:UITableViewRowAnimationMiddle];
+
 //    [_tableview reloadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (IBAction)selectall:(UIBarButtonItem *)sender {
+    if (_deletecellarr.count == 0) {
+        [_deletecellarr addObjectsFromArray:_goodsarr];
+    }
+    else {
+        [_deletecellarr removeAllObjects];
+    }
+    [_tableview reloadData];
 }
 @end
