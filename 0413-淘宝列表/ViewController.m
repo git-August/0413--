@@ -74,8 +74,16 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
 
     }
-
+#pragma mark 放到这里以验证局部刷新不进这里
+    /*
+     if (_deletecellarr.count == 0) {
+        _taobaoNum.text = @"淘宝";
+        _TrashBtn.enabled = NO;
+    }
     else {
+        _taobaoNum.text = [NSString stringWithFormat:@"淘宝(%ld)",_deletecellarr.count];
+        _TrashBtn.enabled = YES;
+    }*/
         return cell;
 }
 #pragma mark 上边打了对勾下边也有,error,使用数组记录。
@@ -98,6 +106,7 @@
         [_deletecellarr addObject:good];
         
     }
+
     //    [_tableview reloadData];//没有动画效果
     //这里取出nsarray * 的indexpath比较怪异,直接把indexpath放入@[]数组中了。
     [_tableview reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
